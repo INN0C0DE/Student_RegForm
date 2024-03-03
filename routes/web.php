@@ -15,13 +15,13 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('public.home');
-});
+Route::get('/', [StudentInfoController::class, 'index'])->name('home.index');
 Route::get('/about', function () {
     return view('public.about');
 })->name('about');
 Route::get('/login', function () {
     return view('public.login');
-});
+})->name('login');
 Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
+Route::get('/create', [StudentInfoController::class, 'create'])->name('home.create');
+Route::post('/store', [StudentInfoController::class, 'store'])->name('home.store');    
